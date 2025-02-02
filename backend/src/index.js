@@ -12,7 +12,8 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 
-
+app.use(express.json({ limit: "100mb" })); 
+app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
 const PORT = process.env.PORT;
 console.log(PORT)
@@ -20,7 +21,8 @@ const __dirname = path.resolve();
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 
-app.use(express.json());
+
+
 app.use(cookieParser());
 app.use(
   cors({
